@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="9dp"
+    android:id="@+id/cardItem">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/Image"
+            android:src="@drawable/image"
+            android:layout_margin="10dp"
+            app:shapeAppearanceOverlay="@style/SoftCorner">
+
+        </com.google.android.material.imageview.ShapeableImageView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Dil Ibadat"
+                android:textSize="20dp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/Singer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="by K.K."
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="15dp">
+
+            </TextView>
+        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:orientation="vertical">-->
+<!--            <Button-->
+<!--                android:text="Play"-->
+<!--                android:onClick="Play"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="40dp"/>-->
+<!--            <Button-->
+<!--                android:text="Pause"-->
+<!--                android:onClick="Pause"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="40dp"/>-->
+<!--            <Button-->
+<!--                android:text="Stop"-->
+<!--                android:onClick="Stop"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="40dp"/>-->
+<!--        </LinearLayout>-->
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
