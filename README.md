@@ -1,4 +1,4 @@
 # Music-app
 
 Here is the Look
-![Screenshot (180)](https://user-images.githubusercontent.com/100480759/224472544-cdfaedc4-f0dc-424a-8c19-f4ee1286dd2f.png)
+![WhatsApp Image 2023-03-11 at 1 25 54 PM](https://user-images.githubusercontent.com/100480759/224472556-e1d9c6f0-7bb4-4015-9d44-a1be4c7d6540.jpeg)
