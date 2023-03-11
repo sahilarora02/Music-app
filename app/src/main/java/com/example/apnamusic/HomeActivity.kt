@@ -1,5 +1,6 @@
 package com.example.apnamusic
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.AudioManager
 import android.media.MediaPlayer
@@ -15,34 +16,29 @@ import java.io.IOException
 class HomeActivity : AppCompatActivity() {
     lateinit var myRecyclerView: RecyclerView
     lateinit var songArrayList: ArrayList<Song>
+    lateinit var mediaPlayer : MediaPlayer
 //    private lateinit var btnPlay:Button
 //    private lateinit var btnPause:Button
 //    private lateinit var btnStop:Button
-    lateinit var mediaPlayer : MediaPlayer
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
   myRecyclerView = findViewById<RecyclerView>(R.id.recyclerView)
        supportActionBar?.hide()
         var imageArray = arrayOf(
-            R.drawable.image,
+            R.drawable.image1,
             R.drawable.secondimage,
             R.drawable.thirdimage,
             R.drawable.fourthimage,
             R.drawable.fifthimage
         )
 
-         var songArray = arrayOf(R.raw.music,
-             R.raw.music2,
-             R.raw.music3,
-             R.raw.music4,
-             R.raw.music,
 
-         )
 
-        var titleArray = arrayOf("Dil Ibadat" , "teri Jhuki Nazar" , "Mockingbird" , "Kesariya" ,"Imagination")
+        var titleArray = arrayOf("Woh lamhe" , "teri Jhuki Nazar" , "Mockingbird" , "Kesariya" ,"Imagination")
 
-        var singerArray = arrayOf("by K.K." , "by Pritam" , "by Eminem" , "by Arijit" , "by Shawn")
+        var singerArray = arrayOf("by Atif Aslam" , "by Pritam" , "by Eminem" , "by Arijit" , "by Shawn")
 myRecyclerView.layoutManager = LinearLayoutManager(this)
         songArrayList = ArrayList<Song>()
         for(index in imageArray.indices){
@@ -65,11 +61,18 @@ myRecyclerView.layoutManager = LinearLayoutManager(this)
 //        btnStop.setOnClickListener {
 //            stopAudio()
 //        }
+
         adapter.setItemClickListener(object : MyAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 // on clicking each Item, what action u want to perform
-                mediaPlayer = MediaPlayer.create(applicationContext, songArray[position])
-                mediaPlayer.start()
+               var intent = Intent(this@HomeActivity , SongActivity::class.java)
+                intent.putExtra("position" , position)
+                intent.putExtra("title" ,titleArray[position])
+                intent.putExtra("imageId" ,imageArray[position])
+                intent.putExtra("singerName" , singerArray[position])
+
+                startActivityForResult(intent, 1)
+                mediaPlayer.stop()
 
             }
 
@@ -77,28 +80,27 @@ myRecyclerView.layoutManager = LinearLayoutManager(this)
 
     }
 
-//    private fun playAudio() {
+override fun onBackPressed() {
+    super.onBackPressed()
+    finish()
+}
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
 //
-//        mediaPlayer?.start()
-////        val audioUrl ="https://www.bensound.com/bensound-music/bensound-ukulele.mp3"
-////        mediaPlayer = MediaPlayer()
-////        mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
-////        try {
-////           mediaPlayer!!.setDataSource(audioUrl)
-////            mediaPlayer!!.prepare()
-////            mediaPlayer!!.start()
-////        }catch (e:IOException){
-////            e.printStackTrace()
-////        }
-//        Toast.makeText(this, "Song Started", Toast.LENGTH_SHORT).show()
-//    }
+//        if(requestCode == 1 && resultCode == RESULT_OK) {
+//            // Here you can handle the result of the SongActivity, for example:
+//            // if the user has clicked the back button in the SongActivity, you can
+//            // do something here, like displaying a Toast or navigating to the HomeActivity
+//            // without showing the splash screen.
 //
-//    private fun pauseAudio() {
-//
-//        mediaPlayer?.pause()
-//    }
-//    private fun stopAudio(){
-//        mediaPlayer?.stop()
+//            // You can navigate to HomeActivity without showing the splash screen using:
+//            // val intent = Intent(this, HomeActivity::class.java)
+//            // startActivity(intent)
+//            // finish()
+//             val intent = Intent(this, HomeActivity::class.java)
+//             startActivity(intent)
+//             finish()
+//        }
 //    }
 
 
